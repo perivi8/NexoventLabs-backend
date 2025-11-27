@@ -995,6 +995,22 @@ async def get_careers():
         ]
     }
 
+# Root endpoint for health check
+@app.get("/")
+async def root():
+    return {
+        "status": "working",
+        "message": "Nexovent Labs Backend API is running",
+        "version": "1.0.0",
+        "endpoints": {
+            "api": "/api",
+            "services": "/api/services",
+            "careers": "/api/careers",
+            "contact": "/api/contact",
+            "newsletter": "/api/newsletter"
+        }
+    }
+
 # Include the router in the main app
 app.include_router(api_router)
 
